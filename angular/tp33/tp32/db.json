@@ -1,0 +1,124 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "DUCRAY",
+      "price": 40,
+      "quantity": 3,
+      "selected": false,
+      "available": false,
+      "imageUrl": "https://parapharmacieplus.tn/media/produits/zrd92m_1731327693.png",
+      "category": "Corps",
+      "discount": true,
+      "discountPrice": 35
+    },
+    {
+      "id": "2",
+      "name": "Vita Citral",
+      "price": 40,
+      "quantity": 5,
+      "selected": false,
+      "available": true,
+      "imageUrl": "https://parapharmacieplus.tn/media/produits/MAIN.jpg",
+      "category": "Corps",
+      "discount": true,
+      "discountPrice": 25
+    },
+    {
+      "id": "4",
+      "name": "Nuxe Créme",
+      "price": 65,
+      "quantity": 10,
+      "selected": true,
+      "available": true,
+      "imageUrl": "https://parapharmacieplus.tn/media/produits/243dnh_1726578321.jpg",
+      "category": "Visage",
+      "discount": true,
+      "discountPrice": 25
+    },
+    {
+      "id": "5",
+      "name": "Mirosa",
+      "price": 30,
+      "quantity": 4,
+      "selected": true,
+      "available": true,
+      "imageUrl": "https://parapharmacieplus.tn/media/produits/rqxq2s_1733314444.jpg",
+      "category": "Visage",
+      "discount": true,
+      "discountPrice": 25
+    },
+    {
+      "id": "8",
+      "name": "Physiomer",
+      "price": 250,
+      "quantity": 8,
+      "selected": false,
+      "available": true,
+      "imageUrl": "https://parapharmacieplus.tn/media/produits/3564300031838.jpg",
+      "category": "BeBe&Maman",
+      "discount": false,
+      "discountPrice": 25
+    },
+    {
+      "id": "9",
+      "name": "Biolane PUR ",
+      "price": 240,
+      "quantity": 4,
+      "selected": true,
+      "available": true,
+      "imageUrl": "https://parapharmacieplus.tn/media/produits/rx8uu6_1732880063.jpg",
+      "category": "BeBe&Maman",
+      "discount": false,
+      "discountPrice": 25
+    },
+    {
+      "id": "10",
+      "name": "Liperol ",
+      "price": 400,
+      "quantity": 4,
+      "selected": true,
+      "available": true,
+      "imageUrl": "https://parapharmacieplus.tn/media/produits/8033331430026.jpg",
+      "category": "Cheveux",
+      "discount": false,
+      "discountPrice": 25
+    },
+    {
+      "id": "11",
+      "name": "ACM ",
+      "price": 100,
+      "quantity": 9,
+      "selected": true,
+      "available": true,
+      "imageUrl": "https://parapharmacieplus.tn/media/produits/3760095250168.jpg",
+      "category": "Pieds",
+      "discount": false,
+      "discountPrice": 25
+    },
+    {
+      "id": "12",
+      "name": "ACM ",
+      "price": 120,
+      "quantity": 5,
+      "selected": true,
+      "available": true,
+      "imageUrl": "https://parapharmacieplus.tn/media/produits/zjn3xu_1710329426.png",
+      "category": "Sante et Nature ",
+      "discount": false,
+      "discountPrice": 25
+    },
+    {
+      "id": "13",
+      "name": "ouss",
+      "price": 40,
+      "quantity": 3,
+      "selected": false,
+      "available": false,
+      "imageUrl": "https://parapharmacieplus.tn/media/produits/zrd92m_1731327693.png",
+      "category": "oussama",
+      "discount": true,
+      "discountPrice": 35
+    }
+  ]
+}

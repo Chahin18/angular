@@ -1,0 +1,278 @@
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+  }
+  
+  /* Navbar Styling */
+  .navbar {
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar .nav-link {
+    color: #007bff !important;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar .nav-link:hover {
+    color: #0056b3 !important;
+  }
+  
+  .navbar .badge {
+    background-color: #ff0000;
+    font-size: 0.9rem;
+  }
+  
+  /* Sidebar Styling */
+  .list-group {
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+  }
+  
+  .list-group-item {
+    border: none;
+    font-weight: bold;
+    color: #495057;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .list-group-item:hover {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  /* Card Styling */
+  .row.no-gutters {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+  .row.no-gutters > [class^="col-"] {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  
+  .card {
+    height: 100%; /* S'assurer que toutes les cartes ont la même hauteur */
+    margin: 0;
+  }
+  
+  .card-img-top {
+    width: 80%; /* S'assurer que l'image occupe toute la largeur du cadre */
+    height: 180px; /* Hauteur fixe pour toutes les images */
+    object-fit: contain; /* Ajuste l'image pour qu'elle s'adapte au cadre tout en conservant ses proportions */
+    background-color: #f8f9fa; /* Ajoute un fond neutre si l'image n'occupe pas tout l'espace */
+    margin: auto; /* Centre l'image horizontalement */
+
+  }
+  
+  
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card-img-top {
+    border-bottom: 2px solid #007bff;
+  }
+  
+  .card-body {
+    padding: 20px;
+  }
+  
+  .card-body .card-title {
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .card-body .card-text {
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  .card-footer {
+    background-color: white;
+    border-top: none;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .card-footer .btn {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .card-footer .btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Container Styling */
+  .container-fluid {
+    margin-top: 20px;
+  }
+  
+  .row {
+    margin-bottom: 20px;
+  }
+  
+  .alert {
+    border-radius: 5px;
+    font-weight: bold;
+  }
+  .card-text span {
+    font-size: 16px;
+  }
+  
+  .card-text span[style*="text-decoration: line-through"] {
+    color: gray;
+  }
+  
+  .card-text span[style*="color: red"] {
+    font-weight: bold;
+    font-size: 18px;
+  }
+  /* Bouton pour un produit souhaité */
+.btn-souhait {
+    background-color: #ff69b4; /* Rose vif */
+    color: white;
+    border: 1px solid #ff69b4;
+  }
+  
+  .btn-souhait:hover {
+    background-color: #ff85c1; /* Rose clair au survol */
+    border-color: #ff85c1;
+  }
+  
+  /* Bouton pour un produit non souhaité */
+  .btn-outline-souhait {
+    background-color: white;
+    color: #ff69b4;
+    border: 1px solid #ff69b4;
+  }
+  
+  .btn-outline-souhait:hover {
+    background-color: #ffe4e1; /* Rose pastel au survol */
+    border-color: #ff69b4;
+    color: #ff69b4;
+  }
+  /* Aligner les éléments dans la barre de navigation */
+/* Conteneur de la barre de navigation */
+.navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Distribution égale des éléments */
+    width: 100%;
+    padding: 0 15px; /* Espacement horizontal */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Boutons de navigation */
+  .nav-buttons {
+    display: flex;
+    gap: 15px; /* Espacement entre les boutons */
+  }
+  
+  .nav-btn {
+    padding: 10px 20px;
+    border: 2px solid #007bff;
+    background-color: white;
+    color: #007bff;
+    border-radius: 20px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-btn:hover {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  /* Barre de recherche */
+  .search-container {
+    flex-grow: 1; /* Permet à la barre de recherche de s'étendre dans l'espace */
+    margin: 0 20px; /* Espacement des deux côtés */
+  }
+  
+  .search-input {
+    width: 100%; /* Prend toute la largeur disponible */
+    max-width: 350px; /* Limite la largeur totale */
+    border-radius: 20px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+  }
+  
+  /* Panier */
+  .cart-link {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Espacement entre l'icône et le texte */
+    color: #007bff;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  .cart-link:hover {
+    color: #0056b3;
+  }
+  
+  .badge-primary {
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 12px;
+    background-color: red;
+  }
+  .btn-update {
+    background-color: #28a745 !important; /* Vert */
+    color: white !important;
+  }
+  
+  .btn-delete {
+    background-color: #dc3545 !important; /* Rouge */
+    color: white !important;
+  }
+  
+  
+  .btn-delete:hover {
+    background-color: #c82333; /* Rouge foncé au survol */
+    transform: scale(1.05); /* Légèrement agrandi au survol */
+  }
+  /* Style pour le bouton de souhait */
+.btn-wishlist {
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  /* Couleur pour un produit ajouté aux souhaits */
+  .btn-souhait {
+    background-color: #ffc107; /* Jaune */
+    color: #212529; /* Noir */
+    border: 1px solid #ffc107;
+  }
+  
+  .btn-souhait:hover {
+    background-color: #e0a800; /* Jaune foncé au survol */
+    transform: scale(1.05); /* Agrandi légèrement */
+  }
+  
+  /* Couleur pour un produit non ajouté aux souhaits */
+  .btn-outline-souhait {
+    background-color: white;
+    color: #ffc107;
+    border: 1px solid #ffc107;
+  }
+  
+  .btn-outline-souhait:hover {
+    background-color: #ffe8a1; /* Jaune pastel au survol */
+    border-color: #ffc107;
+    color: #212529;
+  }
+  

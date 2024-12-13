@@ -1,0 +1,115 @@
+<div class="container mt-5" *ngIf="productFormGroup">
+  <form [formGroup]="productFormGroup">
+    <!-- Name Input -->
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        id="name"
+        type="text"
+        class="form-control"
+        formControlName="name"
+        [ngClass]="{ 'is-invalid': submitted && productFormGroup.controls['name'].errors }"
+      />
+      <div *ngIf="submitted && productFormGroup.controls['name'].errors" class="invalid-feedback">
+        Name is required
+      </div>
+    </div>
+
+    <!-- Price Input -->
+    <div class="form-group">
+      <label for="price">Price</label>
+      <input
+        id="price"
+        type="number"
+        class="form-control"
+        formControlName="price"
+        [ngClass]="{ 'is-invalid': submitted && productFormGroup.controls['price'].errors }"
+      />
+      <div *ngIf="submitted && productFormGroup.controls['price'].errors" class="invalid-feedback">
+        Price is required
+      </div>
+    </div>
+
+    <!-- Category Input -->
+    <div class="form-group">
+      <label for="category">Category</label>
+      <select id="category" class="form-control" formControlName="category">
+        <option value="">Select a category</option>
+        <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+      </select>
+    </div>
+
+    <!-- Quantity Input -->
+    <div class="form-group">
+      <label for="quantity">Quantity</label>
+      <input
+        id="quantity"
+        type="number"
+        class="form-control"
+        formControlName="quantity"
+        [ngClass]="{ 'is-invalid': submitted && productFormGroup.controls['quantity'].errors }"
+      />
+      <div *ngIf="submitted && productFormGroup.controls['quantity'].errors" class="invalid-feedback">
+        Quantity is required
+      </div>
+    </div>
+
+    <!-- Discount Input -->
+    <div class="form-group">
+      <label for="discount">Discount</label>
+      <input
+        id="discount"
+        type="number"
+        class="form-control"
+        formControlName="discount"
+        [ngClass]="{ 'is-invalid': submitted && productFormGroup.controls['discount'].errors }"
+      />
+      <div *ngIf="submitted && productFormGroup.controls['discount'].errors" class="invalid-feedback">
+        Discount is required
+      </div>
+    </div>
+
+    <!-- Image Upload -->
+    <div class="form-group">
+      <label for="imageUrl">Image URL</label>
+      <input
+        id="imageUrl"
+        type="text"
+        class="form-control"
+        formControlName="imageUrl"
+      />
+    </div>
+
+    <!-- Selected Checkbox -->
+    <div class="form-group form-check">
+      <input
+        id="selected"
+        type="checkbox"
+        class="form-check-input"
+        formControlName="selected"
+      />
+      <label for="selected" class="form-check-label">Selected</label>
+    </div>
+
+    <!-- Available Checkbox -->
+    <div class="form-group form-check">
+      <input
+        id="available"
+        type="checkbox"
+        class="form-check-input"
+        formControlName="available"
+      />
+      <label for="available" class="form-check-label">Available</label>
+    </div>
+
+     <!-- Buttons -->
+     <div class="d-flex justify-content-between mt-4">
+      <button type="button" class="btn btn-success" (click)="onSaveProduct()">
+        Save
+      </button>
+      <button type="button" class="btn btn-cancel" (click)="onCancel()">
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>

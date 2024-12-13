@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <!-- Logo -->
+  <a class="navbar-brand d-flex align-items-center" routerLink="/">
+    <img 
+      src="https://png.pngtree.com/template/20190512/ourmid/pngtree-medical-cross-and-health-pharmacy-logo-vector-template-image_148831.jpg" 
+      alt="Logo" 
+      style="height: 40px; width: 40px; margin-right: 10px; border-radius: 50%;" 
+    />
+    <span>HealthStore</span>
+  </a>
+
+  <!-- Navigation links -->
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/products">Products</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link d-flex align-items-center" routerLink="/AddToCart">
+          <span 
+            class="badge badge-primary" 
+            style="background-color: red; margin-right: 5px;"
+          >
+            {{ cartCount }}
+          </span>
+          Panier
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>

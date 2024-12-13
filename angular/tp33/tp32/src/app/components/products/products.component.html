@@ -1,0 +1,224 @@
+
+
+<div class="container-fluid">
+  <div class="row">
+    <!-- Sidebar -->
+    <div class="col-md-3">
+      <div class="list-group">
+        <button
+          type="button"
+          class="list-group-item list-group-item-action"
+          (click)="onSelectCategory('all')"
+        >
+          All Categories
+        </button>
+        <button
+          type="button"
+          class="list-group-item list-group-item-action"
+          *ngFor="let category of categories"
+          (click)="onSelectCategory(category)"
+        >
+          {{ category }}
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="col-md-9">
+      <nav class="navbar navbar-expand-sm bg-light navbar-light mb-3 align-items-center navbar-container">
+        <!-- Boutons de navigation -->
+        <ul class="navbar-nav nav-buttons">
+          <li class="nav-item">
+            <button (click)="onGetAllProducts()" class="btn nav-btn">Tout</button>
+          </li>
+          <li class="nav-item">
+            <button (click)="onGetSelectedProducts()" class="btn nav-btn">Produits souhaités</button>
+          </li>
+          <li class="nav-item">
+            <button (click)="onGetAvailableProducts()" class="btn nav-btn">Produits disponible</button>
+          </li>
+          <li class="nav-item">
+            <button (click)="onNewProduct()" *ngIf="isAdmin" class="btn nav-btn">Nouveau</button>
+          </li>
+        </ul>
+      
+        <!-- Barre de recherche -->
+        <div class="search-container">
+          <input
+            type="text"
+            class="form-control search-input"
+            placeholder="Search product by name..."
+            [(ngModel)]="searchTerm"
+            (input)="SearchProduct(searchTerm)"
+          />
+        </div>
+      
+       
+      </nav>
+      
+      
+      
+      <ng-container *ngIf="filteredProducts$ | async as result">
+        <ng-container [ngSwitch]="result.dataState">
+          <!-- Loading State -->
+          <ng-container *ngSwitchCase="DataStateEnum.LOADING">
+            <div class="alert alert-info text-center">Loading...</div>
+          </ng-container>
+
+          <!-- Error State -->
+          <ng-container *ngSwitchCase="DataStateEnum.ERROR">
+            <div class="alert alert-danger text-center">
+              {{ result.errorMessage }}
+            </div>
+          </ng-container>
+
+        <!-- Loaded State -->
+<ng-container *ngSwitchCase="DataStateEnum.LOADED">
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Main Content -->
+      <div class="col-md-12">
+        <!-- Produits sans réduction -->
+        <h3 class="text-center mb-3">Produits sans réduction</h3>
+        <ng-container *ngIf="filteredProducts$ | async as result">
+          <ng-container [ngSwitch]="result.dataState">
+            <ng-container *ngSwitchCase="DataStateEnum.LOADED">
+              <div class="row no-gutters">
+                <div
+                  class="col-lg-3 col-md-4 col-sm-6 col-12 p-2"
+                  *ngFor="let p of getProductsWithoutDiscount(result.data)"
+                >
+                  <div class="card h-100 shadow">
+                    <img
+                      [src]="p.imageUrl"
+                      alt="{{ p.name }}"
+                      class="card-img-top"
+                      style="height: 200px; object-fit: cover;"
+                    />
+                    <div class="card-body">
+                      <h5 class="card-title text-truncate">{{ p.name }}</h5>
+                      <p class="card-text">
+                        <strong>Price:</strong> ${{ p.price }} <br />
+                        <strong>Quantity:</strong> {{ p.quantity }} <br />
+                        <strong>Category:</strong> {{ p.category }} <br />
+                        <strong>Available:</strong>
+                        {{ p.available ? 'Yes' : 'No' }}
+                      </p>
+                    </div>
+                    <div class="card-footer d-flex flex-column">
+                      <button
+                        class="btn btn-primary mb-2"
+                        (click)="onAddToCart(p)"
+                      >
+                        Add to Cart
+                      </button>
+                        <!-- Update Button (Visible uniquement pour l'administrateur) -->
+                        <button
+                        *ngIf="isAdmin"
+                        class="btn btn-update mb-2"
+                        (click)="onEdit(p)"
+                      >
+                        Update
+                      </button>
+                      <button
+                      *ngIf="isAdmin"
+                        class="btn btn-delete mb-2"
+                        (click)="onDelete(p)"
+                      >
+                        Delete
+                      </button>
+                      
+                      <button
+                      class="btn btn-sm"
+                      [ngClass]="{
+                        'btn-souhait': p.selected,
+                        'btn-outline-souhait': !p.selected
+                      }"
+                      (click)="onToggleSelected(p)"
+                    >
+                    {{ p.selected ? 'Retirer des souhaits' : 'Ajouter aux souhaits' }}
+                    </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </ng-container>
+        </ng-container>
+
+        <!-- Produits avec réduction -->
+        <h3 class="text-center mb-3">Produits avec réduction</h3>
+        <ng-container *ngIf="filteredProducts$ | async as result">
+          <ng-container [ngSwitch]="result.dataState">
+            <ng-container *ngSwitchCase="DataStateEnum.LOADED">
+              <div class="row no-gutters">
+                <div
+                  class="col-lg-3 col-md-4 col-sm-6 col-12 p-2"
+                  *ngFor="let p of getProductsWithDiscount(result.data)"
+                >
+                  <div class="card h-100 shadow">
+                    <img
+                      [src]="p.imageUrl"
+                      alt="{{ p.name }}"
+                      class="card-img-top"
+                      style="height: 200px; object-fit: cover;"
+                    />
+                    <div class="card-body">
+                      <h5 class="card-title text-truncate">{{ p.name }}</h5>
+                      <p class="card-text">
+                        <strong>Price:</strong>
+                        <span
+                          style="text-decoration: line-through; color: gray;"
+                        >
+                          ${{ p.price }}
+                        </span>
+                        <span style="color: red;">${{ p.discountPrice }}</span>
+                        <br />
+                        <strong>Quantity:</strong> {{ p.quantity }} <br />
+                        <strong>Category:</strong> {{ p.category }} <br />
+                        <strong>Available:</strong>
+                        {{ p.available ? 'Yes' : 'No' }}
+                      </p>
+                    </div>
+                    <div class="card-footer d-flex flex-column">
+                      <button
+                        class="btn btn-primary mb-2"
+                        (click)="onAddToCart(p)"
+                      >
+                        Add to Cart
+                      </button>
+                      <button
+                      *ngIf="isAdmin"
+
+                      class="btn btn-update mb-2"
+                      (click)="onEdit(p)"
+                    >
+                      Update
+                    </button>
+                    <button
+                    *ngIf="isAdmin"
+
+                      class="btn btn-delete mb-2"
+                      (click)="onDelete(p)"
+                    >
+                      Delete
+                    </button>
+                    
+                    <button
+                    class="btn btn-sm btn-wishlist"
+                    [ngClass]="{ 'btn-souhait': p.selected, 'btn-outline-souhait': !p.selected }"
+                    (click)="onToggleSelected(p)"
+                  >
+                    {{ p.selected ? 'Retirer des souhaits' : 'Ajouter aux souhaits' }}
+                  </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </ng-container>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</ng-container>
